@@ -28,6 +28,13 @@ app.use(morgan("dev"));
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/blog", blogRoutes);
 
+// ✅ Health Check Route
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "OK"
+  });
+});
+
 // Static files
 app.use(express.static(path.join(__dirname, "./client/build")));
 
